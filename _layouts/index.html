@@ -1,0 +1,387 @@
+---
+layout: default
+---
+
+<main id="app">
+  <section class="bg-blue white">
+    <div class="container pv5 tc">
+      <div class="paragraph center pt4-ns pt3 pb3-ns">
+        <h1 class="mb3 mt0">I Design, Code and Freedive.</h1>
+        <p class="mb4">Front-end web developer that helps companies build effective user interfaces. I love diving into new challenges and into the blue ocean.</p>
+        <a href="mailto:paola.rguti@gmail.com" class="btn" target="_blank">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- work -->
+  <section class="bg-near-white pb5">
+    <img class="w-100 db" src="{{ '/assets/img/wave-blue.svg' | relative_url }}">
+
+    <div id="work" class="container pv4 mv3 tc">
+      <h2 class="title lh-title tc mb3 pb2">Work</h2>
+
+      <div class="flex flex-row-ns flex-column justify-center">
+        <div class="w-third-ns w-100 ph3-ns mb3 mb0-ns">
+          <!-- <i class="fas fa-object-group f2 navy mb2 db"></i> -->
+          <img src="{{ '/assets/img/web_design.svg' | relative_url }}" class="w3 db center mb3">
+          <h4 class="f5 mb2">UI/UX Design</h4>
+          <p class="f6">Clean, effective user interfaces that deliver a pleasant and engaging customer experience.</p>
+        </div>
+
+        <div class="w-third-ns w-100 ph3-ns mb3 mb0-ns">
+          <img src="{{ '/assets/img/coding.svg' | relative_url }}" class="w3 db center mb3">
+          <h4 class="f5 mb2">Web Development</h4>
+          <p class="f6">Elegant web apps built on a modern stack following the industry's best practices.</p>
+        </div>
+
+        <div class="w-third-ns w-100 ph3-ns mb3 mb0-ns">
+          <img src="{{ '/assets/img/email_development.svg' | relative_url }}" class="w3 db center mb3">
+          <h4 class="f5 mb2">Email Development</h4>
+          <p class="f6">Beautifully designed emails that look and work great across different apps and devices.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- projects -->
+    <div class="container">
+      <h3>Recent Projects</h3>
+
+      <div id="projects" class="flex items-start">
+        <div class="w-40-l pr5-l w-100">
+          <div v-for="project in projects" class="mb3 flex items-baseline">
+            <input type="radio" :id="project.title" :value="project" v-model="activeProject" class="dn">
+
+            <img src="{{ '/assets/img/display.svg' | relative_url }}" class="w1 dn db-l mr2" :class="{'o-0': project.title !== activeProject.title }">
+
+            <div>
+              <label :for="project.title" class="pointer">
+                <h3 class="mb1 f4 link"
+                  :class="{ 'active': project.title === activeProject.title }">
+                  ${ project.title }
+                </h3>
+              </label>
+
+              <div class="flex flex-wrap mb1 pb2">
+                <div v-for="tag in project.tags" class="tag">
+                  <p class="mb0">${ tag }</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="!isMobile && isActiveProject" class="w-60 flex flex-column">
+          <div class="mb2">
+            <div class="w-100 flex">
+              <div class="w-12_25 relative">
+                <img src="{{ '/assets/img/mac_left.png' | relative_url }}" class="db disabled">
+                <div class="absolute absolute--fill flex items-center h-100 w-100 pointer"
+                  :class="{ 'disabled o-40': activeProjectScreen === 0 }"
+                  @click="activeProjectScreen = activeProjectScreen - 1">
+                  <i class="fas fa-chevron-left link f4"></i>
+                </div>
+              </div>
+
+              <div class="w-75_50">
+                <div class="flex flex-column justify-between h-100">
+                  <img src="{{ '/assets/img/mac_top.png' | relative_url }}" class="db disabled">
+
+                  <div class="relative h-100">
+                    <transition-group>
+                      <img v-for="(screen, i) in activeProject.screens"
+                        :key="screen"
+                        :src="screen"
+                        :style="{ 'display': i == activeProjectScreen ? 'block' : 'none' }"
+                        :class="{'o-40': progressBar.opacity === 1}">
+                    </transition-group>
+
+                    <div class="absolute top-0 left-0 right-0 z-999">
+                      <div id="progressBar" :style="progressBar"></div>
+                    </div>
+                  </div>
+
+                  <img src="{{ '/assets/img/mac_bottom.png' | relative_url }}" class="db disabled">
+                </div>
+              </div>
+
+              <div class="w-12_25 relative">
+                <img src="{{ '/assets/img/mac_right.png' | relative_url }}" class="db disabled">
+                <div class="absolute absolute--fill flex justify-end items-center h-100 w-100 pointer"
+                  :class="{ 'disabled o-40': activeProjectScreen == activeProject.screens.length - 1 }"
+                  @click="activeProjectScreen = activeProjectScreen + 1">
+                    <i class="fas fa-chevron-right link f4"></i>
+                </div>
+              </div>
+            </div>
+            <img src="{{ '/assets/img/mac_base.png' | relative_url }}" class="db disabled w-100">
+          </div>
+
+          <h3 class="mb2 f4">${ activeProject.title }</h3>
+
+          <p>${ activeProject.description }</p>
+
+          <p v-if="activeProject.role" class="mb0">
+            <span class="fw8">My Role: </span>
+            ${ activeProject.role }
+          </p>
+
+          <a v-if="activeProject.url.length" class="mt3 mb3 db" :href="activeProject.url" target="_blank">Visit website &#187;</a>
+        </div>
+
+        <div v-else-if="showModal">
+          <div class="dn" :class="{'flex flex-column fixed absolute--fill bg-black-40 pa2': showModal}" >
+            <div class="flex flex-column bg-white pa3 h-100">
+              <div class="tr db">
+                <a href="#" @click.prevent="closeModal">
+                  <i class="fas fa-times mb1"></i>
+                </a>
+              </div>
+
+              <div class="overflow-auto">
+                <div class="mb2">
+                  <div class="w-100 flex">
+                    <div class="w-12_25 relative">
+                      <img src="{{ '/assets/img/mac_left.png' | relative_url }}" class="db disabled">
+                      <div class="absolute absolute--fill flex items-center h-100 w-100 pointer"
+                        :class="{ 'disabled o-40': activeProjectScreen === 0 }"
+                        @click="activeProjectScreen = activeProjectScreen - 1">
+                        <i class="fas fa-chevron-left link f4"></i>
+                      </div>
+                    </div>
+
+                    <div class="w-75_50">
+                      <div class="flex flex-column justify-between h-100">
+                        <img src="{{ '/assets/img/mac_top.png' | relative_url }}" class="db disabled">
+
+                        <div class="relative h-100">
+                          <transition-group>
+                            <img v-for="(screen, i) in activeProject.screens"
+                              :key="screen"
+                              :src="'assets/' + screen"
+                              :style="{ 'display': i == activeProjectScreen ? 'block' : 'none' }"
+                              :class="{'o-40': progressBar.opacity === 1}">
+                          </transition-group>
+
+                          <div class="absolute top-0 left-0 right-0 z-999">
+                            <div id="progressBar" :style="progressBar"></div>
+                          </div>
+                        </div>
+
+                        <img src="{{ '/assets/img/mac_bottom.png' | relative_url }}" class="db disabled">
+                      </div>
+                    </div>
+
+                    <div class="w-12_25 relative">
+                      <img src="{{ '/assets/img/mac_right.png' | relative_url }}" class="db disabled">
+                      <div class="absolute absolute--fill flex justify-end items-center h-100 w-100 pointer"
+                        :class="{ 'disabled o-40': activeProjectScreen == activeProject.screens.length - 1 }"
+                        @click="activeProjectScreen = activeProjectScreen + 1">
+                          <i class="fas fa-chevron-right link f4"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <img src="{{ '/assets/img/mac_base.png' | relative_url }}" class="db disabled w-100">
+                </div>
+
+                <h3 class="mb2 f4">${ activeProject.title }</h3>
+
+                <p>${ activeProject.description }</p>
+
+                <p v-if="activeProject.role" class="mb0">
+                  <span class="fw8">My Role: </span>
+                  ${ activeProject.role }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonial -->
+  <section class="bg-half">
+    <div class="container">
+      <div class="bg-light-blue pv4 ph3 flex items-center justify-center">
+        <div class="paragraph center tc">
+          <p class="lh-copy">“For several years, Paola has provided impactful expertise in user-experience and design for our organization. She is an adamant learner and has become an experienced web developer. Paola is persistently insightful and always eager to go above and beyond. I’d be elated to have her as a teammate on any project I’m working on.”</p>
+
+           <img src="{{ '/assets/img/tbeseda.jpeg' | relative_url }}" class="w3 br50 mb1">
+
+          <p class="mb0 fw8">- Taylor Beseda.</p>
+          <p class="f6 mb0 gray">Director of Technology at From the Farmer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- about -->
+  <section id="about">
+    <div class="container pv5">
+      <h2 class="title lh-title tc mb3 pb2">About</h2>
+      <div class="flex flex-row-ns flex-column items-center center ph6-l">
+        <div class="w-third-ns w-100 ph0 ph3-ns tc">
+          <img src="{{ '/assets/img/headshot.jpeg' | relative_url }}" class="br50 db w4 center w-100-ns mb3 mb0-ns">
+        </div>
+
+        <div class="w-two-thirds-ns w-100 ph0 ph3-ns">
+          <p>I'm Paola, I love to create simple, clean, effective user experiences all the way from ideation to implementation and constant iteration.</p>
+
+          <p>I think of the text editor as my ultimate design tool where I can transform ideas into real-life solutions.</p>
+
+          <p class="mb0">When offline, you can find me biking around Medellín, Colombia with my husband or somewhere in the world exploring the ocean on a single breath.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    delimiters: ['${','}'],
+    data: {
+      projects: [
+        {
+          title: 'From the Farmer',
+          description: 'Farm box delivery service in the DC area offering weekly customizable produce boxes on a flexible schedule.',
+          role: 'I collaborated with other designers on the look and feel of the site. I built the customer interface as a shopify theme that supports a subscription onboarding process and other custom features, as well as shopify’s out of the box e-commerce functionalities.',
+          tags: ['UI/UX Design', 'Web Development', 'Email Development', 'HTML', 'SCSS', 'JS', 'Vue.js', 'Liquid Logic', 'Shopify'],
+          url: '',
+          screens: ["{{ '/assets/img/project_ftf1.png' | relative_url }}", "{{ '/assets/img/project_ftf2.png' | relative_url }}", "{{ '/assets/img/project_ftf3.png' | relative_url }}", "{{ '/assets/img/project_ftf4.png' | relative_url }}", "{{ '/assets/img/project_ftf5.png' | relative_url }}", "{{ '/assets/img/project_ftf6.png' | relative_url }}"],
+          activeProjectScreen: 0
+        },
+
+        {
+          title: 'Dill Platform by From the Farmer',
+          description: 'The "Dill" platform leverages From the Farmer’s in-house technology to help other subscription-based companies offer their customers a streamlined signup process, weekly customization and a delivery calendar.',
+          role: 'I worked with multiple clients designing and building a custom branded onboarding and account UI',
+          tags: ['UI/UX Design', 'Web Development', 'HTML', 'SCSS', 'JS', 'Vue.js'],
+          url: '',
+          screens: ["{{ '/assets/img/project_vb1.png' | relative_url }}", "{{ '/assets/img/project_vb2.png' | relative_url }}", "{{ '/assets/img/project_vb3.png' | relative_url }}", "{{ '/assets/img/project_vb4.png' | relative_url }}", "{{ '/assets/img/project_vb5.png' | relative_url }}", "{{ '/assets/img/project_vb6.png' | relative_url }}", "{{ '/assets/img/project_vb7.png' | relative_url }}"],
+          activeProjectScreen: 2
+        },
+
+        {
+          title: 'Retirement Fail',
+          description: 'Book on retirement planning by Greg Sullivan.',
+          role: 'I designed and built a website for the book release. It sold over 1000 copies within the first 2 months.',
+          tags: ['UI/UX Design', 'Web Development', 'HTML', 'CSS'],
+          services: 'UI/UX Design • Web Development • Email Development',
+          url: 'http://retirementfail.com/',
+          screens: ["{{ '/assets/img/project_rf1.png' | relative_url }}", "{{ '/assets/img/project_rf2.png' | relative_url }}", "{{ '/assets/img/project_rf3.png' | relative_url }}", "{{ '/assets/img/project_rf4.png' | relative_url }}"],
+          activeProjectScreen: 0
+        },
+
+        {
+          title: 'Listening Crowd',
+          description: 'A podcast crowd annotation tool.',
+          role: 'I designed the look and feel as well as wrote the markup of the app.',
+          tags: ['UI/UX Design', 'Web Development', 'HTML', 'SCSS'],
+          services: 'UI/UX Design • Web Development',
+          url: 'https://www.listeningcrowd.com/',
+          screens: ["{{ '/assets/img/project_lc1.png' | relative_url }}", "{{ '/assets/img/project_lc2.png' | relative_url }}", "{{ '/assets/img/project_lc3.png' | relative_url }}"],
+          activeProjectScreen: 1
+        },
+
+        {
+          title: 'Nirvana Oceanquest',
+          description: 'A freediving depth competition.',
+          role: 'I designed and built a website to promote the competition and help theorganization team publish the results on real time. ',
+          tags: ['UI/UX Design', 'Web Development', 'HTML', 'CSS'],
+          services: 'UI/UX Design • Web Development',
+          url: '',
+          screens: ["{{ '/assets/img/project_noq1.png' | relative_url }}", "{{ '/assets/img/project_noq2.png' | relative_url }}", "{{ '/assets/img/project_noq3.png' | relative_url }}"],
+          activeProjectScreen: 0
+        },
+      ],
+
+      activeProject: {},
+
+      activeProjectScreen: 0,
+
+      progressBar: {
+        opacity: 0,
+        width: '0%'
+      },
+
+      windowWidth: window.innerWidth,
+
+      showModal: false
+    },
+
+    computed: {
+      isMobile: function() {
+        return this.windowWidth < 960;
+      },
+
+      isActiveProject: function() {
+        return Object.keys(this.activeProject).length > 0;
+      }
+    },
+
+    watch: {
+      isMobile: function(mobile, large) {
+        this.showModal = false;
+
+        if (mobile) {
+          this.activeProject = {};
+        } else if (!this.isActiveProject) {
+          this.activeProject = this.projects[0];
+        }
+      },
+
+      activeProject: function(newProject, oldProject) {
+        this.progressBar.width = '0%';
+        this.progressBar.opacity = 1;
+        this.activeProjectScreen = newProject.activeProjectScreen;
+
+        if (this.isMobile && this.isActiveProject) {
+          this.showModal = true;
+        }
+
+        var self = this;
+        setTimeout(function() {
+          self.progressBar.width = '100%';
+        }, 100);
+        setTimeout(function() {
+          self.progressBar.opacity = 0;
+          self.progressBar.width = '0%';
+        }, 1000);
+      }
+    },
+
+    methods: {
+      scroll: function(id) {
+        document.getElementById(id).scrollIntoView({
+          behavior: 'smooth',
+          block: "start"
+        });
+      },
+
+      closeModal: function() {
+        this.showModal = false;
+        this.activeProject = {};
+      },
+
+      handleWindowResize: function(e) {
+        this.windowWidth = e.currentTarget.innerWidth;
+      },
+
+    },
+
+    created: function() {
+      if (!this.isMobile) this.activeProject = this.projects[0];
+    },
+
+    mounted: function() {
+      window.addEventListener('resize', this.handleWindowResize);
+    },
+
+    beforeDestroy: function() {
+      window.removeEventListener('resize', this.handleWindowResize);
+    },
+  });
+</script>

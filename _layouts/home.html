@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<main class="pv5">
+  <div class="container">
+    {%- if site.posts.size > 0 -%}
+      <h2 class="title">{{ page.list_title | default: "Posts" }}</h2>
+      <ul class="pl0">
+        {%- for post in site.posts -%}
+        <li class="list">
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="post-meta ttu f6">{{ post.date | date: date_format }}</span>
+          <h3 class="mb1">
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- if post.excerpt -%}
+            <p>{{ post.excerpt }}</p>
+          {%- endif -%}
+
+          <div class="flex flex-wrap mb1 pb2">
+            {%- for tag in post.tags -%}
+              <div class="tag">
+                <p class="mb0">{{ tag }}</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</main>
