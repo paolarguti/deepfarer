@@ -31,23 +31,31 @@
 
 {% assign bg_class = '' %}
 {% assign text_class = 'black' %}
+{% assign logo_class = 'blue' %}
+{% assign logo_src = '/assets/img/whale-fluke-black.svg' | relative_url %}
 {% if page.layout == 'index' %}
   {% assign bg_class = 'bg-blue' %}
   {% assign text_class = 'white' %}
+  {% assign logo_class = 'white' %}
+  {% assign logo_src = '/assets/img/whale-fluke.svg' | relative_url %}
 {% endif %}
 
 <header class="{{ bg_class }} {{ text_class }}">
   <div class="container">
-    <div class="flex justify-between pv3 bb">
-      <div class="flex items-baseline">
-        <img src="{{ '/assets/img/symbol_deepfarer.png' | relative_url }}" class="db mr2 w3 lh-solid" alt="logo">
-        <h2 class="sans fw8 mb0 lh-solid">deepfarer</h2>
-      </div>
+    <div class="flex justify-between pt3 pb2 bb">
+      <a href="/">
+        <div class="flex items-center">
+          <div class="w3 pr3">
+            <img src="{{ logo_src }}" class="db lh-solid" alt="logo">
+          </div>
+          <h2 class="mb0 lh-solid {{ logo_class }} mono fw4 f3">deepfarer</h2>
+        </div>
+      </a>
 
       <nav class="flex-ns dn items-center">
         <ul class="h-100 flex-ns dn justify-end items-center list mv0">
           <li class="ml3 pl2 ttu tracked f6">
-            <a href="#work" class="{{text_class}}" @click.prevent="scroll('work')">Work</a>
+            <a href="#work" class="{{ text_class }}" @click.prevent="scroll('work')">Work</a>
           </li>
 
           <li class="ml3 pl2 ttu tracked f6">

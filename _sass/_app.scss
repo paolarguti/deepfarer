@@ -28,15 +28,18 @@ a.white:hover {
   color: #fff;
 }
 
-h1,
 .title {
-  font-family: 'Carter One';
-  font-weight: 400;
+  font-family: 'Muli';
+  font-weight: 800;
+}
+
+.mono {
+  font-family: 'Space Mono';
 }
 
 h2, h3, h4 {
   margin-top: 0;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 /*** TACHYONS OVERWRITE ***/
@@ -62,6 +65,8 @@ h4, .f4 { font-size: 1.25rem; }
 .bg-light-blue { background-color: #e5f4fc }
 
 .gray { color: #758b9f; }
+
+.blue { color: #0e5172; }
 
 .navy { color: #042b46; }
 
@@ -95,7 +100,7 @@ h4, .f4 { font-size: 1.25rem; }
   max-width: 100%;
 }
 .btn {
-  padding: 0.5em 1em;
+  padding: 0.75em 2em;
   background-color: #59aab9;
   color: white;
   text-transform: uppercase;
@@ -108,6 +113,7 @@ h4, .f4 { font-size: 1.25rem; }
   -moz-transition: all .1s linear;
   -webkit-transition: all .1s linear;
   transition: all .1s linear;
+  cursor: pointer;
 }
 
 .btn:hover {
