@@ -91,6 +91,11 @@ h4, .f4 { font-size: 1.25rem; }
   margin-right: auto;
 }
 
+.section {
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
 .paragraph {
   width: 600px;
   max-width: 100%;
@@ -186,11 +191,141 @@ main[size="A4"] {
   width: 21cm;
   height: 29.7cm;
 }
+.screen {
+  padding: 0.5rem 0;
+  transition: all 0.050s ease-in;
+  img {
+    width: 100%;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+// dots
+  .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+  }
+  .slick-dots {
+    position: absolute;
+    bottom: -25px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+  }
+  .slick-dots li {
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+  }
+  .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+  }
+  .slick-dots li button:hover,
+  .slick-dots li button:focus {
+    outline: none;
+  }
+  .slick-dots li button:hover:before,
+  .slick-dots li button:focus:before {
+    opacity: 1;
+  }
+  .slick-dots li button:before {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '\f111';
+    font-weight: 800;
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: black;
+  }
+  .slick-dots {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
+  }
 
 /*** DESKTOP ***/
 @media screen and (min-width: 60em) {
+  .screen {
+    width: 710px;
+    margin: 0 -6rem;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .screen:not(.slick-center) {
+    padding: 4rem;
+  }
+
+  .screen:not(.slick-active) {
+    opacity: 0;
+  }
+
+  .slick-active.screen {
+    z-index: 1;
+  }
+
+  .slick-center.screen,
+  .slick-current.screen {
+    opacity: 1;
+    z-index: 2;
+  }
+
   .bg-none-l {
     background: none;
+  }
+
+  // screens
+  .slick-track, .slick-slide {
+    display: flex!important;
+    align-items: center;
   }
 }
 

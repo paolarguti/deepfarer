@@ -36,48 +36,55 @@ layout: default
     <div id="work" class="container tc-ns tl">
       <h2 class="lh-title tc mb4 pb2">A Fully-Customized Experience</h2>
 
-      <div class="flex flex-column flex-row-ns section ph5-l mb4 pb3-ns">
+      <div class="flex flex-column flex-row-ns section ph5-l ph2 mb4 pb3-ns">
         <div class="ph2 w-25-ns w-100">
           <div class="flex flex-row flex-column-ns items-center">
-            <img src="https://static.thenounproject.com/png/807758-200.png" class="w3 db center-ns mb2 mr3 mr0-ns">
+            <img src="{{ '/assets/img/icon-goal.svg' | relative_url }}" class="w3 db center-ns mb2 mr3 mr0-ns">
             <p class="mb0 fw7">Goal-Driven</p>
           </div>
         </div>
 
         <div class="ph2 w-25-ns w-100">
           <div class="flex flex-row flex-column-ns items-center">
-            <img src="https://static.thenounproject.com/png/808247-200.png" class="w3 db center-ns mb2 mr3 mr0-ns">
+            <img src="{{ '/assets/img/icon-human.svg' | relative_url }}" class="w3 db center-ns mb2 mr3 mr0-ns">
             <p class="mb0 fw7">Made for Humans</p>
           </div>
         </div>
 
         <div class="ph2 w-25-ns w-100">
           <div class="flex flex-row flex-column-ns items-center">
-            <img src="https://static.thenounproject.com/png/808268-200.png" class="w3 db center-ns mb2 mr3 mr0-ns">
+            <img src="{{ '/assets/img/icon-mobile.svg' | relative_url }}" class="w3 db center-ns mb2 mr3 mr0-ns">
             <p class="mb0 fw7">Mobile First</p>
           </div>
         </div>
 
         <div class="ph2 w-25-ns w-100">
           <div class="flex flex-row flex-column-ns items-center">
-            <img src="https://static.thenounproject.com/png/808071-200.png" class="w3 db center-ns mb2 mr3 mr0-ns">
+            <img src="{{ '/assets/img/icon-brand.svg' | relative_url }}" class="w3 db center-ns mb2 mr3 mr0-ns">
             <p class="mb0 fw7">Branded</p>
           </div>
         </div>
       </div>
 
       <div class="flex flex-wrap items-center section">
-        <div class="w-60-ns w-100 ph4-ns ph2 mb3 mb0-ns">
-          <img src="{{ '/assets/img/beyond-default.png' | relative_url }}" class="db br1 shadow-4">
+        <div class="w-60-l w-100 ph5-l ph3 mb3 mb0-l">
+          <!-- <img src="{{ '/assets/img/beyond-default.png' | relative_url }}" class="db br1 shadow-4"> -->
+
+          <video width="100%" playsinline="" muted="" loop="" autoplay="" poster="{{ '/assets/img/beyond-default.png' | relative_url }}"  class="db shadow-4">
+            <!-- <source src="/assets/videos/merchants.webm" type="video/webm"> -->
+            <source src="{{ '/assets/img/cropped-signup.mp4' | relative_url }}">
+            <!-- <source src="/assets/videos/merchants.ogv" type="video/ogg"> -->
+            Your browser does not support the video tag
+          </video>
         </div>
 
-        <div class="w-40-ns w-100 tl ph4-ns ph2">
+        <div class="w-40-l w-100 tl pl0-l pr5-l ph3">
 
           <h3 class="mb2 f4">Beyond the Default</h3>
 
-          <p>ReCharge app offers an easy way to add subscription support to your Shopify store. While this is great as a start, it might come short while aligning with your specific business needs.</p>
+          <p>ReCharge offers a simple, easy way to add subscription support to your Shopify store.</p>
 
-          <p>We help you go beyond the default and build a fully-customized experience that makes it easy for your customers to subscribe and manage their deliveries, boosting conversions and customer engagement.</p>
+          <p>We go beyond ReCharge's default experience and help you build a fully-customized user interface that speaks your brand and makes it easy for your customers to subscribe and manage their deliveries; boosting conversions and customer engagement.</p>
 
           <a href="mailto:paola.rguti@gmail.com" class="fw7">Get in touch &#187;</a>
         </div>
@@ -96,40 +103,163 @@ layout: default
       Engaged customers
       Order Value
       -->
+    </div>
   </section>
 
   <!-- testimonial -->
   <section class="bg-half">
     <div class="container">
       <div class="bg-light-blue pv4 ph3 flex items-center justify-center">
-        <div class="paragraph center tc">
-          <p class="lh-copy">“For several years, Paola has provided impactful expertise in user-experience and design for our organization. She is an adamant learner and has become an experienced web developer. Paola is persistently insightful and always eager to go above and beyond. I’d be elated to have her as a teammate on any project I’m working on.”</p>
+        <div class="post center tc">
+          <p class="lh-copy">“Paola is remarkably insightful and seems to posses the perfect blend of technical ability and design expertise. We have been working with Paola for the past several months and she's had a measurable impact on the success of our business. Paola has transformed the look and feel of our website while simultaneously improving the experience for our customers.  And if that wasn't enough, she is very responsive and works quickly. We look forward to continuing to working with her for as long as we can. Highly, highly recommend!”</p>
 
-           <img src="{{ '/assets/img/tbeseda.jpeg' | relative_url }}" class="w3 br50 mb1">
+           <img src="{{ '/assets/img/turner.jpeg' | relative_url }}" class="w3 br50 mb1">
 
-          <p class="mb0 fw8">- Taylor Beseda.</p>
-          <p class="f6 mb0 gray">Director of Technology at From the Farmer.</p>
+          <p class="mb0 fw8">- Turner Hoff.</p>
+          <p class="f6 mb0 gray">Founder @ Vegetable and butcher.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- about -->
-  <section id="about">
-    <div class="container pv5">
-      <h2 class="lh-title tc mb3 pb2">About</h2>
-      <div class="flex flex-row-ns flex-column items-center center ph6-l">
-        <div class="w-third-ns w-100 ph0 ph3-ns tc">
-          <img src="{{ '/assets/img/headshot.jpeg' | relative_url }}" class="br50 db w4 center w-100-ns mb3 mb0-ns">
+  <!-- work -->
+  <section>
+    <div class="container pt5">
+      <h2 class="lh-title tc mb3 pb2">Work</h2>
+
+      <div class="flex flex-wrap bg-near-white mb4">
+
+        <div class="w-40-ns w-100 cover pa5" style="background: url({{ '/assets/img/IMG_1408-2.jpg' | relative_url }})">
         </div>
 
-        <div class="w-two-thirds-ns w-100 ph0 ph3-ns">
-          <p>I'm Paola, I love to create simple, clean, effective user experiences all the way from ideation to implementation and constant iteration.</p>
+        <div class="w-60-ns w-100 pa5-l pa4">
+          <h3 class="mb2 f3">Vegetable and Butcher</h3>
+          <p>Vegetable and butcher is a subscription-based service delivering chef designed, dietitian approved, prepared meals to your home or office in Washington, DC.</p>
 
-          <p>I think of the text editor as my ultimate design tool where I can transform ideas into real-life solutions.</p>
+          <div class="flex flex-wrap pb2 mb3">
+            <div class="tag">Shopify</div>
+            <div class="tag">Recharge</div>
+            <div class="tag">UI/UX Design</div>
+            <div class="tag">HTML</div>
+            <div class="tag">CSS</div>
+            <div class="tag">Javascript</div>
+            <div class="tag">Vue.js</div>
+          </div>
 
-          <p class="mb0">When offline, you can find me biking around Medellín, Colombia with my husband or somewhere in the world exploring the ocean on a single breath.</p>
+          <a href="https://vegetableandbutcher.com/?_ab=0&_fd=0&_sc=1&preview_theme_id=75577000039" target="_blank" class="fw7">Visit Website &#187;</a>
         </div>
+      </div>
+
+      <div class="flex flex-wrap section">
+        <div class="w-50-ns w-100 ph3 mb4">
+          <h4 class="mb2">Signup Flow</h4>
+          <p>We improved conversion rate <!-- by % --> by creating a multi-step signup flow that minimizes choice, eliminates distractions and guides the customer towards subscription.</p>
+          <a href="https://vegetableandbutcher.com/collections/build-your-program" target="_blank" class="fw7">See it live &#187;</a>
+        </div>
+
+        <div class="w-50-ns w-100 ph3 mb4">
+          <h4 class="mb2">Home Page</h4>
+          <p>Working hand in hand with the founders we created a bold, modern home page that reflects V+B's values and mission.</p>
+          <a href="https://vegetableandbutcher.com/?_ab=0&_fd=0&_sc=1&preview_theme_id=75577000039" target="_blank" class="fw7">See it live &#187;</a>
+        </div>
+
+        <div class="w-50-ns w-100 ph3 mb4">
+          <h4 class="mb2">Weekly Menu</h4>
+          <p>We developed an internal process to seamlessly update the menu every week. This new system helps the team save over 1h every week and reduced error significantly.</p>
+        </div>
+
+        <div class="w-50-ns w-100 ph3 mb4">
+          <h4 class="mb2">Customer Portal</h4>
+          <p>Leveraging ReCharge's recently-launched <a href="https://rechargepayments.com/features-theme-engine" class="i black">Theme Engine</a>, we built a custom theme that makes it easy for the customer to manage their account from any device.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="relative ph2 ph0-l">
+      <div id="previous-slide" class="absolute top-0 bottom-0 left-0 w5 z-4 dn db-l"></div>
+
+      <div id="slide" class="">
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-home1.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-home2.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-home3.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-home4.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-account1.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-signup1.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen">
+          <img src="{{ '/assets/img/screen-signup2.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-signup3.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-menu1.png' | relative_url }}" class="db">
+        </div>
+
+        <div class="screen bg-white">
+          <img src="{{ '/assets/img/screen-menu2.png' | relative_url }}" class="db">
+        </div>
+      </div>
+
+      <div id="next-slide" class="absolute top-0 bottom-0 right-0 w5 z-4 dn db-l"></div>
+    </div>
+
+    <div id="dots" class="flex justify-center"></div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript">
+      $('#slide').slick({
+        infinite: true,
+        centerMode: true,
+        variableWidth: true,
+        centerPadding: '0',
+        slidesToShow: 3,
+        dots: true,
+        appendDots: $('#dots'),
+        prevArrow: $('#previous-slide'),
+        nextArrow: $('#next-slide'),
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              variableWidth: false,
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+        ]
+      });
+    </script>
+
+    <div class="container pt4 pb5">
+
+      <div class="tc">
+        <a href="mailto:paola.rguti@gmail.com" class="btn" target="_blank">Get in touch</a>
       </div>
     </div>
   </section>
